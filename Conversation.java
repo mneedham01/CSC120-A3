@@ -6,8 +6,7 @@ class Conversation {
     Scanner in;
     String transcript="\nHello! What's on your mind?";
     Short round;
-    String user_response=""; 
-    String computer_response;
+    String original_user_response=""; 
 
     //asking for the number of rounds 
     in= new Scanner(System.in);
@@ -21,14 +20,29 @@ class Conversation {
     //loop
     for (int i=0; i<= round; i++){
       //gets the user_response
-      user_response= in.nextLine();
+      String user_response= in.nextLine();
+      System.out.print("this is the user response: "+ user_response);
+
       //adds it to the transcript
       transcript= transcript+user_response+"\n";
 
+      //check if the response has "I am" or "You are"
+      if (user_response.contains("I am")){
+        System.out.println("This response contains 'I am'");
+        user_response=user_response.replace("I am","I'm");
+        System.out.println("New response: "+user_response);
+      }
+      if (user_response.contains("You are")){
+        System.out.println("This response contains 'You are'");
+        user_response= user_response.replace("You are","You're");
+        System.out.println("New response: "+user_response);
+      }
+  
       //split response into words
-      String words[]= user_response.split(" ");
+      String words[]= original_user_response.split(" ");
+
       //check whether it has the words we want and add replacements to computer_response
-      computer_response="";
+      String computer_response="";
       for (String token :words){
         System.out.println(token);
         //check if it says "I"
@@ -54,9 +68,11 @@ class Conversation {
         if (token.equals("You're")){
           token="I'm";
         }
+        computer_response+=token;
         }
-        System.out.println(token);
         }
+        //print response
+        System.out.println(computer_response);
       }
 
       //if (i!=0){
