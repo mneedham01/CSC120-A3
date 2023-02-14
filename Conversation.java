@@ -24,16 +24,19 @@ class Conversation {
       //adds it to the transcript
       transcript= transcript+response+"\n";
 
+      //if response
+
       if (i!=0){
         System.out.println("Mmm hmm.");
         transcript=transcript+"Mmm hmm. \n";
       }
 
-       }
-    
-    System.out.println("\nConversation finished.\nTranscript:");
-    System.out.println(transcript);
+      if (i==round){
+        System.out.println("\nConversation finished.\nTranscript:");
+        System.out.println(transcript);
+      }
 
+       }
 
     }
 
