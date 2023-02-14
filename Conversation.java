@@ -6,7 +6,8 @@ class Conversation {
     Scanner in;
     String transcript="\nHello! What's on your mind?";
     Short round;
-    String response=""; 
+    String user_response=""; 
+    String computer_response;
 
     //asking for the number of rounds 
     in= new Scanner(System.in);
@@ -14,27 +15,59 @@ class Conversation {
     round=in.nextShort();
 
     //start off conversation
-    System.out.println("\nHello! What's on your mind?");
+    System.out.print("\nHello! What's on your mind?");
 
 
     //loop
     for (int i=0; i<= round; i++){
-      //gets the response
-      response= in.nextLine();
+      //gets the user_response
+      user_response= in.nextLine();
       //adds it to the transcript
-      transcript= transcript+response+"\n";
+      transcript= transcript+user_response+"\n";
 
-      //if response
-
-      if (i!=0){
-        System.out.println("Mmm hmm.");
-        transcript=transcript+"Mmm hmm. \n";
+      //split response into words
+      String words[]= user_response.split(" ");
+      //check whether it has the words we want and add replacements to computer_response
+      computer_response="";
+      for (String token :words){
+        System.out.println(token);
+        //check if it says "I"
+        if (token.equals("I")){
+          //if it's at the start of the sentence, then capitalize. If not, lowercase
+          if (token.equals(words[0])){
+              token="You";
+          }
+          else{
+            token="you";
+          }
+        }
+        if (token.equals("I'm")){
+          if (token.equals(words[0])){
+            token="You're";
+          }
+          else{
+            token="you're";
+          }
+        if (token.equals("You")){
+          token="I";
+        }
+        if (token.equals("You're")){
+          token="I'm";
+        }
+        }
+        System.out.println(token);
+        }
       }
 
-      if (i==round){
-        System.out.println("\nConversation finished.\nTranscript:");
-        System.out.println(transcript);
-      }
+      //if (i!=0){
+       // System.out.println("Mmm hmm.");
+       // transcript=transcript+"Mmm hmm. \n";
+     // }
+
+     // if (i==round){
+       // System.out.println("\nConversation finished.\nTranscript:");
+      //  System.out.println(transcript);
+   //   }
 
        }
 
@@ -43,4 +76,4 @@ class Conversation {
     // You will start the conversation here.
 
 
-  }
+  
