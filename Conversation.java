@@ -24,8 +24,10 @@ class Conversation {
       //adds it to the transcript
       transcript= transcript+response+"\n";
 
-      System.out.println("Mmm hmm.");
-      transcript=transcript+"Mmm hmm. \n";
+      if (i!=0){
+        System.out.println("Mmm hmm.");
+        transcript=transcript+"Mmm hmm. \n";
+      }
 
        }
     
