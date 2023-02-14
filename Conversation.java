@@ -4,9 +4,9 @@ class Conversation {
   public static void main(String[] arguments) {
 
     Scanner in;
-    String transcript;
+    String transcript="\nHello! What's on your mind?";
     Short round;
-    String response; 
+    String response=""; 
 
     //asking for the number of rounds 
     in= new Scanner(System.in);
@@ -16,15 +16,26 @@ class Conversation {
     //start off conversation
     System.out.println("\nHello! What's on your mind?");
 
+
     //loop
-    //for (int i=0; i< round-1; i++){
-       // in= new Scanner(System.in);
-       // response=in.nextString;
+    for (int i=0; i<= round; i++){
+      //gets the response
+      response= in.nextLine();
+      //adds it to the transcript
+      transcript= transcript+response+"\n";
+
+      System.out.println("Mmm hmm.");
+      transcript=transcript+"Mmm hmm. \n";
+
+       }
+    
+    System.out.println("\nConversation finished.\nTranscript:");
+    System.out.println(transcript);
 
 
     }
 
     // You will start the conversation here.
-}
 
 
+  }
