@@ -21,33 +21,29 @@ class Conversation {
     for (int i=0; i<= round; i++){
       //gets the user_response
       String user_response= in.nextLine();
-      System.out.print("this is the user response: "+ user_response);
 
       //adds it to the transcript
       transcript= transcript+user_response+"\n";
 
       //check if the response has "I am" or "You are"
       if (user_response.contains("I am")){
-        System.out.println("This response contains 'I am'");
         user_response=user_response.replace("I am","I'm");
-        System.out.println("New response: "+user_response);
       }
       if (user_response.contains("You are")){
-        System.out.println("This response contains 'You are'");
         user_response= user_response.replace("You are","You're");
-        System.out.println("New response: "+user_response);
       }
   
       //split response into words
-      String words[]= original_user_response.split(" ");
+      String[] words= original_user_response.split(" ");
 
       //check whether it has the words we want and add replacements to computer_response
       String computer_response="";
-      for (String token :words){
+      
+      for (String token:words){
         System.out.println(token);
         //check if it says "I"
         if (token.equals("I")){
-          //if it's at the start of the sentence, then capitalize. If not, lowercase
+          //if it's at the start of the sentence, then capitalize. If not, lowercase.
           if (token.equals(words[0])){
               token="You";
           }
@@ -69,9 +65,11 @@ class Conversation {
           token="I'm";
         }
         computer_response+=token;
+
         }
         }
         //print response
+        System.out.println("I got out of the for loop");
         System.out.println(computer_response);
       }
 
