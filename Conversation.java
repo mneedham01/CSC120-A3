@@ -13,44 +13,27 @@ class Conversation {
     round=in.nextShort();
 
     //start off conversation
-    System.out.print("\nHello! What's on your mind?");
+    System.out.println("\nHello! What's on your mind?");
 
 
     //loop
     for (int i=0; i<= round; i++){
-      //gets the user_response
-      String user_response= in.nextLine();
-
+      //gets the response
+      String response= in.nextLine();
       //adds it to the transcript
-      transcript= transcript+user_response+"\n";
-
-      String computer_response="Mmm hmmm.";
-
-      if (user_response.contains("I ")){
-        computer_response=user_response.replace("I ","you ")+"?";
+      transcript= transcript+response+"\n";
+      
+      if (i!=0){
+        System.out.println("Mmm hmm.");
+      transcript=transcript+"Mmm hmm. \n";
       }
-      if (user_response.contains("I'm ")){
-        computer_response=user_response.replace("I'm ","you're ")+"?";
       }
-      if (user_response.contains("you ")){
-        computer_response=user_response.replace("you","I")+"?";
-      }
-
-      System.out.println(computer_response);
-
-     //if (i!=0){
-      // System.out.println("Mmm hmm.");
-      // transcript=transcript+"Mmm hmm. \n";
-     // }
-
-     if (i==round){
-       System.out.println("\nConversation finished.\nTranscript:");
-       System.out.println(transcript);
-     }
-
+  
+      System.out.println("\nConversation finished.\nTranscript:");
+      System.out.println(transcript);
       }
     }
-  }
+  
 
 
   
