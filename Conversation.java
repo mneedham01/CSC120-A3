@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 class Conversation {
   public static void main(String[] arguments) {
@@ -6,6 +7,7 @@ class Conversation {
     Scanner in;
     String transcript="\nHello! What's on your mind?";
     Short round;
+    String computer_response;
 
     //asking for the number of rounds 
     in= new Scanner(System.in);
@@ -13,37 +15,63 @@ class Conversation {
     round=in.nextShort();
 
     //start off conversation
-    System.out.println("\nHello! What's on your mind?");
+    System.out.print("\nHello! What's on your mind?");
 
 
     //loop
     for (int i=0; i<round; i++){
       //gets the response
-      in= new Scanner(System.in);
       String user_response= in.nextLine();
 
       //adds it to the transcript
       transcript= transcript+user_response+"\n";
       
       //turns the user response into an array of words in the response
-      String[] words= user_response.split("");
+      String[] words= user_response.split(" ");
 
-      //creates a new array for the computer response
-      
-      for (int j=0; j<words.length;i++){
+      //initializes string of computer response
+      computer_response="";
+
+      //loops through the user response array and checks if it's a word to be mirrored. 
+      for (int j=0; j<words.length;j++){
           if (words[j].equals("I")){
-            words[j]="you";
+            //Checks if it's the first letter to see if it should capitalize
+            if (j==0){
+              computer_response+="You ";
+            }
+            else{
+              computer_response+="you ";
+            }
+            continue;
           }
           if (words[j].equals("I'm")){
-            words[j]="You're";
+            if (j==0){
+              computer_response+="You're ";
+            }
+            else{
+              computer_response+="you're ";
+            }
+            continue;
           }
-      }
+          if (words[j].equals("you")){
+            computer_response+="I ";
+            continue;
+          }
+          if (words[j].equals("you're")){
+            computer_response+="I'm ";
+            continue;
+          }
+          else{
+            computer_response+=words[j]+" ";
+          }
+          }
 
-
-      if (i!=0){
-        System.out.println("Mmm hmm.");
-        transcript=transcript+"Mmm hmm. \n";
-      }
+      //add string to transcript
+      transcript+= computer_response+"\n";
+      //print out the string
+      System.out.println(computer_response);
+      
+      
       }
   
       System.out.println("\nConversation finished.\nTranscript:");
