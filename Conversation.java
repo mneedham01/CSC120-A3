@@ -17,15 +17,32 @@ class Conversation {
 
 
     //loop
-    for (int i=0; i<= round; i++){
+    for (int i=0; i<round; i++){
       //gets the response
-      String response= in.nextLine();
+      in= new Scanner(System.in);
+      String user_response= in.nextLine();
+
       //adds it to the transcript
-      transcript= transcript+response+"\n";
+      transcript= transcript+user_response+"\n";
       
+      //turns the user response into an array of words in the response
+      String[] words= user_response.split("");
+
+      //creates a new array for the computer response
+      
+      for (int j=0; j<words.length;i++){
+          if (words[j].equals("I")){
+            words[j]="you";
+          }
+          if (words[j].equals("I'm")){
+            words[j]="You're";
+          }
+      }
+
+
       if (i!=0){
         System.out.println("Mmm hmm.");
-      transcript=transcript+"Mmm hmm. \n";
+        transcript=transcript+"Mmm hmm. \n";
       }
       }
   
