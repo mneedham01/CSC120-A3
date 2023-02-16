@@ -6,9 +6,10 @@ class Conversation {
   public static void main(String[] arguments) {
 
     Scanner in;
-    String transcript="\nHello! What's on your mind?";
+    ArrayList<String> transcript = new ArrayList<String>();
     Short round;
     String computer_response;
+    Random rand = new Random();
 
     //asking for the number of rounds 
     in= new Scanner(System.in);
@@ -17,6 +18,7 @@ class Conversation {
 
     //start off conversation
     System.out.println("\nHello! What's on your mind?");
+    transcript.add("Hello! What's on your mind?");
 
 
     //loop
@@ -25,7 +27,7 @@ class Conversation {
       String user_response= in.nextLine();
 
       //adds it to the transcript
-      transcript= transcript+user_response+"\n";
+      transcript.add(user_response+"\n");
       
       //turns the user response into an array of words in the response
       String[] words= user_response.split(" ");
@@ -76,15 +78,28 @@ class Conversation {
           
       //If the computer doesn't have to mirror any words, change it to a random response
       if (counter==0 & user_response.length()>0){
-        System.out.println("random response");
-        transcript+= computer_response+"\n";
+        String[] rand_responses={"Mmm hmm.","Oh yeah?","I didn't know that.","For sure.", "That might be right.","I believe you.","That's okay.","Oh really?","Oh.","Uh huh?"};
+        int num=rand.nextInt(10);
+        computer_response=rand_responses[num];
+        //print out response
+        System.out.println(computer_response);
+        //add to trancript
+        transcript.add(computer_response+"\n");
       }
+      //If the computer does have to change words, change any punctuation to a question mark.
       if (counter>0 & user_response.length()>0){
-        computer_response+="?";
+        int puncPlace=computer_response.charAt(computer_response.length()-2);
+        if (puncPlace=='.'||puncPlace=='!'||puncPlace=='?'||puncPlace==','||puncPlace==','){;
+          computer_response=computer_response.substring(0,computer_response.length()-2);
+          computer_response+="?";
+        }
+        else{
+          computer_response+="?";
+        }
         //print out the string
         System.out.println(computer_response);
         //add string to transcript
-       transcript+= computer_response+"\n";
+       transcript.add(computer_response+"\n");
       }
   
       
