@@ -58,11 +58,6 @@ class Conversation {
             }
             continue;
           }
-          if (words[j].equals("me")){
-            counter+=1;
-            compResponse+="you ";
-            continue;
-          }
           if (words[j].equals("I'm")){
             counter += 1;
             if (j==0){
@@ -71,6 +66,11 @@ class Conversation {
             else{
               compResponse+="you're ";
             }
+            continue;
+          }
+          if (words[j].equals("me")){
+            counter+=1;
+            compResponse+="you";
             continue;
           }
           if (words[j].equals("am")){
