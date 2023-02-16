@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Random;
 
 class Conversation {
   public static void main(String[] arguments) {
@@ -15,7 +16,7 @@ class Conversation {
     round=in.nextShort();
 
     //start off conversation
-    System.out.print("\nHello! What's on your mind?");
+    System.out.println("\nHello! What's on your mind?");
 
 
     //loop
@@ -78,20 +79,14 @@ class Conversation {
         System.out.println("random response");
         transcript+= computer_response+"\n";
       }
-      else{
+      if (counter>0 & user_response.length()>0){
+        computer_response+="?";
         //print out the string
         System.out.println(computer_response);
         //add string to transcript
        transcript+= computer_response+"\n";
-     }
-      //If it did have to mirror, take off any punctuation and add a question mark. 
-      //String lastChar=Character.toString(computer_response.charAt(computer_response.length()-1));
-     // System.out.println(lastChar);
-      //if (lastChar.equals(".") || lastChar.equals("!") || lastChar.equals(",")||lastChar.equals(";")||lastChar.equals(":")){
-       // computer_response.substring(0,computer_response.length()-1);
-       // computer_response+="?";
-   //   }
-
+      }
+  
       
     }
     System.out.println("\nConversation finished.\nTranscript:");
