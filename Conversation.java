@@ -14,7 +14,7 @@ class Conversation {
     Scanner in;
     ArrayList<String> transcript = new ArrayList<String>();
     Short round;
-    String computer_response;
+    String compResponse;
     Random rand = new Random();
 
     //asking for the number of rounds 
@@ -39,7 +39,7 @@ class Conversation {
       String[] words= user_response.split(" ");
 
       //reset the computer response
-      computer_response="";
+      compResponse="";
 
       //set up counter for changing mirror words
       int counter=0;
@@ -51,55 +51,55 @@ class Conversation {
             counter += 1;
             //Checks if it's the first lett er to see if it should capitalize
             if (j==0){
-              computer_response+="You ";
+              compResponse+="You ";
             }
             else{
-              computer_response+="you ";
+              compResponse+="you ";
             }
             continue;
           }
           if (words[j].equals("me")){
             counter+=1;
-            computer_response+="you ";
+            compResponse+="you ";
             continue;
           }
           if (words[j].equals("I'm")){
             counter += 1;
             if (j==0){
-              computer_response+="You're ";
+              compResponse+="You're ";
             }
             else{
-              computer_response+="you're ";
+              compResponse+="you're ";
             }
             continue;
           }
           if (words[j].equals("am")){
             counter+=1;
-            computer_response+="are ";
+            compResponse+="are ";
             continue;
           }
           if (words[j].equals("my")){
             counter+=1;
-            computer_response+="your ";
+            compResponse+="your ";
             continue;
           }
           if (words[j].equals("you")){
             counter += 1;
-            computer_response+="I ";
+            compResponse+="I ";
             continue;
           }
           if (words[j].equals("you're")){
             counter += 1;
-            computer_response+="I'm ";
+            compResponse+="I'm ";
             continue;
           }
           if (words[j].equals("your")){
             counter+=1;
-            computer_response+="my ";
+            compResponse+="my ";
             continue;
           }
           else{
-            computer_response+=words[j]+" ";
+            compResponse+=words[j]+" ";
           }
           }
           
@@ -107,26 +107,26 @@ class Conversation {
       if (counter==0 & user_response.length()>0){
         String[] rand_responses={"Mmm hmm.","Oh yeah?","I didn't know that.","For sure.", "That might be right.","I believe you.","That's okay.","Oh really?","Oh.","Uh huh?"};
         int num=rand.nextInt(10);
-        computer_response=rand_responses[num];
+        compResponse=rand_responses[num];
         //print out response
-        System.out.println(computer_response);
+        System.out.println(compResponse);
         //add to trancript
-        transcript.add(computer_response+"\n");
+        transcript.add(compResponse+"\n");
       }
       //If the computer does have to change words, change any punctuation to a question mark.
       if (counter>0 & user_response.length()>0){
-        int puncPlace=computer_response.charAt(computer_response.length()-2);
+        int puncPlace=compResponse.charAt(compResponse.length()-2);
         if (puncPlace=='.'||puncPlace=='!'||puncPlace=='?'||puncPlace==','||puncPlace==','){;
-          computer_response=computer_response.substring(0,computer_response.length()-2);
-          computer_response+="?";
+          compResponse=compResponse.substring(0,compResponse.length()-2);
+          compResponse+="?";
         }
         else{
-          computer_response+="?";
+          compResponse+="?";
         }
         //print out the string
-        System.out.println(computer_response);
+        System.out.println(compResponse);
         //add string to transcript
-       transcript.add(computer_response+"\n");
+       transcript.add(compResponse+"\n");
       }
   
       
