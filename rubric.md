@@ -24,7 +24,7 @@ YES 1 pt: Allocates static array of canned responses
 
 YES 1 pt: Uses a canned response when no mirror words detected
 
-PART 1 pt: Detects the requested set of mirror words (at minimum)
+YES 1 pt: Detects the requested set of mirror words (at minimum)
 
 YES 1 pt: Replaces simple mirror words appropriately (unpunctuated, lowercase)
 
