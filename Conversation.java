@@ -74,7 +74,7 @@ class Conversation {
           }
           
       //If the computer doesn't have to mirror any words, change it to a random response
-      if (counter==0){
+      if (counter==0 & user_response.length()>0){
         System.out.println("random response");
         transcript+= computer_response+"\n";
       }
