@@ -117,7 +117,7 @@ class Conversation {
       if (counter>0 & user_response.length()>0){
         int puncPlace=computer_response.charAt(computer_response.length()-2);
         if (puncPlace=='.'||puncPlace=='!'||puncPlace=='?'||puncPlace==','||puncPlace==','){;
-          computer_response=computer_response.substring(0,computer_response.length()-1);
+          computer_response=computer_response.substring(0,computer_response.length()-2);
           computer_response+="?";
         }
         else{
