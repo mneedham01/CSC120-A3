@@ -29,12 +29,16 @@ class Conversation {
       //turns the user response into an array of words in the response
       String[] words= user_response.split(" ");
 
-      //initializes string of computer response
+      //reset the computer response
       computer_response="";
+
+      //set up counter for changing mirror words
+      int counter=0;
 
       //loops through the user response array and checks if it's a word to be mirrored. 
       for (int j=0; j<words.length;j++){
           if (words[j].equals("I")){
+            counter += 1;
             //Checks if it's the first letter to see if it should capitalize
             if (j==0){
               computer_response+="You ";
@@ -45,6 +49,7 @@ class Conversation {
             continue;
           }
           if (words[j].equals("I'm")){
+            counter += 1;
             if (j==0){
               computer_response+="You're ";
             }
@@ -54,10 +59,12 @@ class Conversation {
             continue;
           }
           if (words[j].equals("you")){
+            counter += 1;
             computer_response+="I ";
             continue;
           }
           if (words[j].equals("you're")){
+            counter += 1;
             computer_response+="I'm ";
             continue;
           }
@@ -65,19 +72,34 @@ class Conversation {
             computer_response+=words[j]+" ";
           }
           }
+          
+      //If the computer doesn't have to mirror any words, change it to a random response
+      if (counter==0){
+        System.out.println("random response");
+        transcript+= computer_response+"\n";
+      }
+      else{
+        //print out the string
+        System.out.println(computer_response);
+        //add string to transcript
+       transcript+= computer_response+"\n";
+     }
+      //If it did have to mirror, take off any punctuation and add a question mark. 
+      //String lastChar=Character.toString(computer_response.charAt(computer_response.length()-1));
+     // System.out.println(lastChar);
+      //if (lastChar.equals(".") || lastChar.equals("!") || lastChar.equals(",")||lastChar.equals(";")||lastChar.equals(":")){
+       // computer_response.substring(0,computer_response.length()-1);
+       // computer_response+="?";
+   //   }
 
-      //add string to transcript
-      transcript+= computer_response+"\n";
-      //print out the string
-      System.out.println(computer_response);
       
-      
+    }
+    System.out.println("\nConversation finished.\nTranscript:");
+    System.out.println(transcript);
       }
   
-      System.out.println("\nConversation finished.\nTranscript:");
-      System.out.println(transcript);
       }
-    }
+    
   
 
 
